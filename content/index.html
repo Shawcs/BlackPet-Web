@@ -5,6 +5,7 @@
     <script src="https://code.getmdl.io/1.1.2/material.min.js"></script>
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.indigo-pink.min.css">
     <script src="./js/client.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
 
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -31,18 +32,6 @@
           <div class="mdl-button mdl-js-button mdl-button--icon"for="waterfall-exp" id="shopping">
             <i class="material-icons">shopping_cart</i>
           </div>
-          <style type="text/css">
-                      .shopping_cart_scroll {
-              z-index: 10;
-              background-color: lightblue;
-              position: fixed;
-              top:0;
-              right:0;
-              height: 100%;
-              width: 20%;
-            }
-
-          </style>
         </div>
       </header>
       <main class="mdl-layout__content">
@@ -53,19 +42,11 @@
 
             <i>eeeeeeeeeeeeeeeeeeeee</i>
           </div>
-          <style>
-          .demo-card-square.mdl-card {
-            width: 320px;
-            height: 320px;
-          }
-          .demo-card-square > .mdl-card__title {
-            color: #fff;
-          }
-          </style>
+       
           <script> 
           $(document).ready(function(){
               $("#zoom").click(function(){
-                  $("#yolo").animate({
+                  $("#{{item._id}}").animate({
                        left: '250px', 
                       height: '+=500px',
                       width: '+=500px'
@@ -73,7 +54,9 @@
               });
           });
           </script> 
+
           <div class="mdl-layout__content" id="results">
+
           </div>
         </div>
       </main>
