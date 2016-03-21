@@ -2,13 +2,12 @@ var express     = require('express');        // call express
 var app         = express();                 // define our app using express
 var bodyParser  = require('body-parser');
 var swig        = require('swig')
-var path    = require("path");
+var path        = require("path");
 
 // BASE SETUP
 // =============================================================================
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://dev:dev@ds023478.mlab.com:23478/webitem');
-app.use(express.static('./public'));
 var Item     = require('./server/model/webitem.js');
 
 // configure app to use bodyParser()
@@ -82,8 +81,9 @@ router.get('/', function(req, res) {
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);
-
+app.use(express.static(__dirname +'/public'));
 // START THE SERVER
 // =============================================================================
 app.listen(port);
 console.log('Magic happens on port ' + port);
+

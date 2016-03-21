@@ -8,7 +8,6 @@ function myFunction() {
 	xhttp.onreadystatechange = function() {
 	  if (xhttp.readyState == 4 && xhttp.status == 200) {
 	    result = JSON.parse(xhttp.responseText);
-	    console.log(result.item[0].prix);
 	    document.querySelector('#results').innerHTML = result.html;
 	  }
 	};
