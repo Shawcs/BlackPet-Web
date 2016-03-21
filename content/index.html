@@ -18,25 +18,39 @@
         <!-- Top row, always visible -->
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">Title</span>
+          <span class="mdl-layout-title">The middle shop !</span>
           <div class="mdl-layout-spacer"></div>
 
 
 <script>
 $(document).ready(function(){
-    $(".mdl-button").click(function(){
-        $(".page-content").toggle("slide");
+    $("#shopping").click(function(){
+        $(".shopping_cart_scroll").toggle("slide");
     });
 });
 </script>
 
-            <div class="mdl-button mdl-js-button mdl-button--icon"for="waterfall-exp">
-              <i class="material-icons"  >shopping_cart</i>
+            <div class="mdl-button mdl-js-button mdl-button--icon"for="waterfall-exp" id="shopping">
+              <i class="material-icons">shopping_cart</i>
             </div>
+            
 
+            <style type="text/css">
+            .shopping_cart_scroll {
+              z-index: 10;
+              background-color: lightblue;
+    position: fixed;
+    top:0;
+    right:0;
+    height: 100%;
+    width: 20%;
+}
+
+</style>
 
           </div>
         </div>
+
         <!-- Bottom row, not visible on scroll -->
         <div class="mdl-layout__header-row">
           <div class="mdl-layout-spacer"></div>
@@ -52,6 +66,14 @@ $(document).ready(function(){
       </div>
       <main class="mdl-layout__content">
         <div class="page-content">
+
+          <div class="shopping_cart_scroll">
+<i> weeeeeeeeeeeeeeeeeeeeeeeeee</i>
+
+
+<i>eeeeeeeeeeeeeeeeeeeee</i>
+
+</div>
 <style>
 .demo-card-square.mdl-card {
   width: 320px;
@@ -61,12 +83,23 @@ $(document).ready(function(){
   color: #fff;
 }
 </style>
+<script> 
+$(document).ready(function(){
+    $("#zoom").click(function(){
+        $("#yolo").animate({
+             left: '250px', 
+            height: '+=500px',
+            width: '+=500px'
+        });
+    });
+});
+</script> 
 
 <div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--4-col">
+  <div class="mdl-cell mdl-cell--4-col" >
 
     <!-- Square card -->
-<div class="demo-card__media mdl-card mdl-shadow--2dp"><img src="../resources/images/ring.jpg" width="320" 
+<div class="demo-card__media mdl-card mdl-shadow--2dp" id="yolo" ><img src="../resources/images/ring.jpg" width="320" 
     height="320" border="0"  alt="" style="padding:5px;">
 
   <div class="mdl-card__title mdl-card--expand">
@@ -77,7 +110,7 @@ $(document).ready(function(){
     Aenan convallis.
   </div>
   <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="zoom">
       Price
     </a>
   </div>
