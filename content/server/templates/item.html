@@ -1,16 +1,19 @@
+
+
+
 <div class="content">
   <main class="">
     <div class="mdl-grid mdl-shadow--2dp">
       {% for item in items %}
-    	<div id="item" class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp ">
-        <img src="{{item.imgurl}}" width="320" height="320" border="0"  alt="" style="padding:5px;"> </img>
+    	<div id="{{item._id}}" class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp ">
+        <img src="{{item.imgurl}}" width="320" height="320" display="center"  alt="" style="padding:5px;"> </img>
         <div class="mdl-card__title">
           <h1 class="mdl-card__title-text">{{item.name}}</h1>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <label class="mdl-card__supporting-text" >{{item.description}}</label>
         </div>
-        <div class="mdl-card__actions mdl-card--border">
+        <div class="mdl-card__actions mdl-card--border" >
           <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">{{item.prix}} €</a>
         </div>
     	</div>
