@@ -1,6 +1,7 @@
-var express    = require('express');        // call express
-var app        = express();                 // define our app using express
-var bodyParser = require('body-parser');
+var express     = require('express');        // call express
+var app         = express();                 // define our app using express
+var bodyParser  = require('body-parser');
+var swig        = require('swig')
 
 // BASE SETUP
 // =============================================================================
@@ -40,7 +41,7 @@ router.route('/items')
         var item = new Item();      // create a new instance of the Item model
         item.name = req.query.name;  // set the item name (comes from the request)
         item.imgurl = req.query.imgurl;
-        item.prix = req.query.prix;
+        item.price = req.query.price;
         item.description = req.query.description;
         console.log(req.query.imgurl);
         console.log(req.query);
@@ -60,12 +61,17 @@ router.route('/items')
         Item.find(function(err, items) {
             if (err)
                 res.send(err);
-
-            res.json(items);
+            console.log("------ Items ------")
+            console.log(items);
+            console.log("------ Items ------")
+            swig.renderFile('./server/templates/item.html', {items: items},function(err, output){
+                if(err){
+                    throw err;
+                }
+                res.end(output);    
+            });
         });
     });
-
-
 
 router.get('/', function(req, res) {
     res.json({ message: 'Yeaaaaaaaah! welcome to my badass api' });   
@@ -81,5 +87,3 @@ app.use('/api', router);
 // =============================================================================
 app.listen(port);
 console.log('Magic happens on port ' + port);
-
->>>>>>> 6e8aac0982a7686f992938597a35ec3bfc2a9e21

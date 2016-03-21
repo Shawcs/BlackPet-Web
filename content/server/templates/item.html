@@ -1,0 +1,22 @@
+<div class="content">
+  <main class="">
+    {% for item in items %}
+    <div class="mdl-grid mdl-shadow--2dp">
+    	<div id="item" class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-shadow--4dp ">
+        <img src="{{item.imgurl}}" width="320" height="320" border="0"  alt="" style="padding:5px;"> </img>
+        <div class="mdl-card__title">
+          <h1 class="mdl-card__title-text">{{item.name}}</h1>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <label class="mdl-card__supporting-text" >{{item.description}}</label>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            <label class="mdl-textfield__label information" >{{item.price}}</label>
+          </a>
+        </div>
+    	</div>
+    </div>
+    {% endfor %}
+  </main>
+</div>
