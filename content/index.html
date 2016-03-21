@@ -14,18 +14,18 @@
   <body>
     <!-- Uses a header that contracts as the page scrolls down. -->
     <div class="demo-layout-waterfall mdl-layout mdl-js-layout">
-      <header class="mdl-layout__header mdl-layout__header--waterfall">
+      <header class="mdl-layout__header ">
         <!-- Top row, always visible -->
         <div class="mdl-layout__header-row">
           <!-- Title -->
           <span class="mdl-layout-title">The middle shop !</span>
           <div class="mdl-layout-spacer"></div>
           <script>
-          $(document).ready(function(){
-              $("#shopping").click(function(){
-                  $(".shopping_cart_scroll").toggle("slide");
-              });
-          });
+            $(document).ready(function(){
+                $("#shopping").click(function(){
+                    $(".shopping_cart_scroll").toggle("slide");
+                });
+            });
           </script>
 
           <div class="mdl-button mdl-js-button mdl-button--icon"for="waterfall-exp" id="shopping">
@@ -33,8 +33,8 @@
           </div>
           <style type="text/css">
                       .shopping_cart_scroll {
-                        z-index: 10;
-                        background-color: lightblue;
+              z-index: 10;
+              background-color: lightblue;
               position: fixed;
               top:0;
               right:0;
@@ -44,19 +44,7 @@
 
           </style>
         </div>
-        <!-- Bottom row, not visible on scroll -->
-        <div class="mdl-layout__header-row">
-          <div class="mdl-layout-spacer"></div>
-        </div>
       </header>
-
-      <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Title</span>
-        <nav class="mdl-navigation">
-   
-          <a class="mdl-navigation__link" href="">Link</a>
-        </nav>
-      </div>
       <main class="mdl-layout__content">
         <div class="page-content">
           <div class="shopping_cart_scroll">
@@ -64,7 +52,6 @@
 
 
             <i>eeeeeeeeeeeeeeeeeeeee</i>
-
           </div>
           <style>
           .demo-card-square.mdl-card {
