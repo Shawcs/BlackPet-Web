@@ -1,0 +1,21 @@
+
+                      .shopping_cart_scroll {
+                        z-index: 10;
+                        background-color: lightblue;
+              position: fixed;
+              top:0;
+              right:0;
+              height: 100%;
+              width: 20%;
+            }
+
+        
+
+          .demo-card-square.mdl-card {
+            width: 320px;
+            height: 320px;
+          }
+          .demo-card-square > .mdl-card__title {
+            color: #fff;
+          }
+     
