@@ -3,11 +3,13 @@
  <link rel="stylesheet" type="text/css" href="/css/main.css">
 <div class="content">
   <main class="">
-    <div class="mdl-grid mdl-shadow--2dp">
+    <div id="container" class="mdl-grid mdl-shadow--2dp" >
+
+
       {% for item in items %}
-    	<div id="{{item._id}}" class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp ">
+    	<div id="{{item.id}}" class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp" onClick="unzoom(this)">
         <div id="image">
-          <img src="{{item.imgurl}}" width="320" height="320" alt="" style="padding:5px;"> </img>
+          <img src="{{item.imgurl}}" width="320" height="320" alt="" style="padding:5%;"> </img>
         </div>
         <div class="mdl-card__title">
           <h1 class="mdl-card__title-text">{{item.name}}</h1>
@@ -19,6 +21,7 @@
         </div>
         <div class="mdl-card__actions mdl-card--border">
           <a id="{{item.id}}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onClick="doItemClick(this)">{{item.prix}} €</a>
+
         </div>
     	</div>
       {% endfor %}
