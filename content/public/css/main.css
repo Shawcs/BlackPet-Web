@@ -18,6 +18,10 @@
   color: #fff;
 }
 
+#shopitem{
+  min-height: 0px;
+}
+
 #image{
   margin:auto;
   width:320px;
@@ -26,4 +30,12 @@
 
 #text{
   text-align:center;
+}
+
+#count{
+  float: right;
+  margin: 0;
+  font-size: 14px;
+  height: 36px;
+  line-height: 36px;
 }

@@ -3,7 +3,7 @@
 'use strict';
 
 var items;
-var shopCart= [];
+var shopCart = [];
 
 function myFunction() {
 	var result;
@@ -22,25 +22,10 @@ function myFunction() {
 myFunction();
 
 function doItemClick(item){
-	var id = item.id;
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-	  	if (xhttp.readyState == 4 && xhttp.status == 200) {
-		    var result = xhttp.response;	
-		    console.log("Result : " + result);
-	    	document.querySelector('#shopList').innerHTML += result;
-	  	}
-	};
-
-	var item = getItem(id);
-	shopCart.push({id : id, count : i})
-	console.log("http://localhost:8080/api/shopitem?item="+JSON.stringify(item));	
-	xhttp.open("GET", "http://localhost:8080/api/shopitem?item="+ JSON.stringify(item), true);
-	xhttp.send();
+	addShopCartItem(item.id);
 }
 
 function getItem(id){
-	console.log(items);
 	for (var i = items.length - 1; i >= 0; i--) {
 		if(items[i]._id == id)
 			return items[i];
@@ -56,10 +41,53 @@ function shopCartContain(id){
 }
 
 function addShopCartItem(id){
-	if(shopCartContain(id))
+	if(shopCartContain(id)){
 		shopCart.where({id : id})[0].count++;
+		var item = getItem(id);
+		console.log(item.name + " : " + shopCart.where({id : id})[0].count);
+		updateCountShopItem(getItem(id));
+	}
+	else{
+		shopCart.push({id: id, count : 1});
+		var item = getItem(id);
+		getHtmlShopItem(item);
+	}
 }
 
+function getHtmlShopItem(item){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  	if (xhttp.readyState == 4 && xhttp.status == 200) {
+		    var result = xhttp.response;	
+		    console.log("Result : " + result);
+	    	document.querySelector('#shopList').innerHTML += result;
+	  	}
+	};
+	console.log("http://localhost:8080/api/shopitem?item="+JSON.stringify(item));	
+	xhttp.open("GET", "http://localhost:8080/api/shopitem?item="+ JSON.stringify(item), true);
+	xhttp.send();
+}
+
+function updateCountShopItem(item){
+	var shopItemListHtml = document.getElementById("shopList");
+	var child = shopItemListHtml.childNodes;
+	console.log("nb enfant : " + child.length);
+	for (var i = child.length - 1; i >= 0; i--) {
+		var id = child[i];
+		var children = id.children[2].children[1];
+		console.log(id)
+		console.log("child : " + children);
+		child[i].getElementsByTagName("h6")[0].innerHTML = getShopCartItem(id).count;
+	};
+}
+
+function getShopCartItem(id){
+	for (var i = shopCart.length - 1; i >= 0; i--) {
+		if (shopCart[i].id == id)
+			return shopCart[i];
+	};
+	return null;
+}
 
 Array.prototype.where = function (filter) {
 
@@ -72,7 +100,7 @@ Array.prototype.where = function (filter) {
 
         case 'object':
             for(var property in filter) {
-              if(!filter.hasOwnProperty(prop)) 
+              if(!filter.hasOwnProperty(property)) 
                   continue; // ignore inherited properties
 
               collection = $.grep(collection, function (item) {
