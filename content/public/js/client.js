@@ -19,11 +19,36 @@ function myFunction() {
 	xhttp.send();
 }
 
+
 myFunction();
 
 function doItemClick(item){
 	addShopCartItem(item.id);
 }
+
+var a=0;
+function unzoom(item){
+if(a==0){
+$("#"+item.id).animate({
+                      
+                      height: '+=500px',
+                      width: '+=500px'
+      });
+a=1;
+}
+else{
+	$("#"+item.id).animate({
+                      
+                      height: '-=500px',
+                      width: '-=500px'
+      },"swing"
+
+      );
+	a=0;
+}
+console.log("appelé oui");
+}
+
 
 function getItem(id){
 	for (var i = items.length - 1; i >= 0; i--) {

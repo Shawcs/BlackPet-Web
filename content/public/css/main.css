@@ -10,6 +10,11 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
+#title{
+font-family: 'Dancing Script';
+cursive;
+}
+
 .demo-card-square.mdl-card {
   width: 320px;
   height: 320px;
@@ -38,4 +43,13 @@
   font-size: 14px;
   height: 36px;
   line-height: 36px;
+}
+#zoom_in{
+  position:absolute;
+  right: 5%;
+}
+#container{
+position:absolute;
+margin-top: 5%;
+margin-left: 5%;
 }
