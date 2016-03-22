@@ -30,10 +30,11 @@ var a=0;
 function unzoom(item){
 if(a==0){
 $("#"+item.id).animate({
+
                       
                       height: '+=500px',
                       width: '+=500px'
-      });
+});
 a=1;
 }
 else{
@@ -46,7 +47,7 @@ else{
       );
 	a=0;
 }
-console.log("appelé oui");
+//console.log("appelé oui");
 }
 
 
