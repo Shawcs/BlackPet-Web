@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 .shopping_cart_scroll {
   z-index: 10;
   background-color: lightblue;
@@ -18,4 +19,13 @@
 .demo-card-square > .mdl-card__title {
   color: #fff;
 }
-     
+
+#image{
+  margin:auto;
+  width:320px;
+  height:320px;
+}
+
+#text{
+  text-align:center;
+}
