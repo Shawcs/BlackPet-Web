@@ -10,6 +10,7 @@ var mongoose   = require('mongoose');
 mongoose.connect('mongodb://dev:dev@ds023478.mlab.com:23478/webitem');
 var Item     = require('./server/model/webitem.js');
 
+
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,10 +32,13 @@ router.use(function(req, res, next) {
 
 // more routes for our API will happen here
 
+router.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname+'/index.html'));
+});
+
 // on routes that end in /items
 // ----------------------------------------------------
 router.route('/items')
-
     // create a item (accessed at POST http://localhost:8080/api/items)
     .post(function(req, res) {
         
@@ -48,35 +52,39 @@ router.route('/items')
         item.save(function(err) {
             if (err)
                 res.send(err);
-
             res.json({ message: 'Item created!' });
         });
-        
     })
 
-     // get all the bears (accessed at GET http://localhost:8080/api/bears)
+     // get all the bears (accessed at GET http://localhost:8080/api/items)
     .get(function(req, res) {
         Item.find(function(err, items) {
             if (err)
                 res.send(err);
-            console.log("------ Items ------")
-            console.log(items);
-            console.log("------ Items ------")
+            console.log("Items found");
             swig.renderFile('./server/templates/item.html', {items: items},function(err, output){
                 if(err){
                     throw err;
                 }
                 res.status(200).send({html : output, item: items});
                 res.end();    
+                console.log("Items send");
             });
         });
     });
 
-router.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname+'/index.html'));
-});
-
-// more routes for our API will happen here
+router.route('/shopitem')
+    .get(function(req, res) {
+        console.log(req.query.item);
+        swig.renderFile('./public/html/shopitem.html', JSON.parse(req.query.item),function(err, output){
+            if(err){
+                throw err;
+            }
+            res.status(200).send(output);
+            res.end();
+            console.log("shopitem html generated");
+        });
+    });
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
